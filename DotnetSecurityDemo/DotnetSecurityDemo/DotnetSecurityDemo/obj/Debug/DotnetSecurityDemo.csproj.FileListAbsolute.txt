@@ -1,0 +1,6 @@
+D:\work\git\repository\DotnetSecurityDemo\DotnetSecurityDemo\DotnetSecurityDemo\bin\Debug\DotnetSecurityDemo.exe.config
+D:\work\git\repository\DotnetSecurityDemo\DotnetSecurityDemo\DotnetSecurityDemo\obj\Debug\DotnetSecurityDemo.csprojResolveAssemblyReference.cache
+D:\work\git\repository\DotnetSecurityDemo\DotnetSecurityDemo\DotnetSecurityDemo\bin\Debug\DotnetSecurityDemo.exe
+D:\work\git\repository\DotnetSecurityDemo\DotnetSecurityDemo\DotnetSecurityDemo\bin\Debug\DotnetSecurityDemo.pdb
+D:\work\git\repository\DotnetSecurityDemo\DotnetSecurityDemo\DotnetSecurityDemo\obj\Debug\DotnetSecurityDemo.exe
+D:\work\git\repository\DotnetSecurityDemo\DotnetSecurityDemo\DotnetSecurityDemo\obj\Debug\DotnetSecurityDemo.pdb
