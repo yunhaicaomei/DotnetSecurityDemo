@@ -1,90 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Cryptography;
 
-namespace DotnetSecurityDemo
+namespace DotnetSecurityDemo.Hash
 {
-    /// <summary>
-    /// 哈希算法
-    /// </summary>
-    public class HashAlgorithmHelper
+    public class PBKDF2Helper
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="val"></param>
-        /// <returns></returns>
-        public static byte[] GetHash<T>(string val) where T : HashAlgorithm, new()
-        {
-            byte[] buffer = Encoding.UTF8.GetBytes(val);
-            T hash = new T();
-            byte[] t = hash.ComputeHash(buffer);
-            return t;
-        }
-
-        public static byte[] GetHash<T>(System.IO.Stream val) where T : HashAlgorithm, new()
-        {
-            T hash = new T();
-            byte[] t = hash.ComputeHash(val);
-            return t;
-        }
-
-        public static string GetHashBase64String<T>(string input) where T : HashAlgorithm, new()
-        {
-            var bytes = GetHash<T>(input);
-            return Convert.ToBase64String(bytes);
-        }
-
-        public static string GetHashHexString<T>(string input) where T : HashAlgorithm, new()
-        {
-            var bytes = GetHash<T>(input);
-            StringBuilder returnStr = new StringBuilder();
-            if (bytes != null)
-            {
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    returnStr.Append(bytes[i].ToString("X2"));
-                }
-            }
-            return returnStr.ToString();
-        }
-
-        public static byte[] GetHmac<T>(string secret, string val) where T : KeyedHashAlgorithm, new()
-        {
-            T hmac = new T();
-            if (secret != null)
-            {
-                hmac.Key = Encoding.UTF8.GetBytes(secret);
-            }
-            byte[] buffer = Encoding.UTF8.GetBytes(val);
-            byte[] t = hmac.ComputeHash(buffer);
-            return t;
-        }
-
-        public static string GetHmacBase64String<T>(string secret, string input) where T : KeyedHashAlgorithm, new()
-        {
-            var bytes = GetHmac<T>(secret, input);
-            return Convert.ToBase64String(bytes);
-        }
-
-        public static string GetHmacHexString<T>(string secret, string input) where T : KeyedHashAlgorithm, new()
-        {
-            var bytes = GetHmac<T>(secret, input);
-            StringBuilder returnStr = new StringBuilder();
-            if (bytes != null)
-            {
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    returnStr.Append(bytes[i].ToString("X2"));
-                }
-            }
-            return returnStr.ToString();
-        }
-
         public static string PBKDF2HexString(string val, int saltSize, int iterations)
         {
             Rfc2898DeriveBytes rfc = new Rfc2898DeriveBytes(val, saltSize, iterations);
@@ -99,7 +23,6 @@ namespace DotnetSecurityDemo
             }
             return returnStr.ToString();
         }
-
 
         /// <summary>
         /// 计算PBKDF2哈希密码

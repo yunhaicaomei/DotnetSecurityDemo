@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotnetSecurityDemo.Hash;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -14,9 +15,9 @@ namespace DotnetSecurityDemo
         public static void Main(string[] args)
         {
             //测试对称加密算法
-            //TestSymmetricAlgorithm();
+            TestSymmetricAlgorithm();
             //测试哈希算法
-            //TestHashAlgorithm();
+            TestHashAlgorithm();
             //测试非对称加密算法
             TestAsymmetricAlgorithm();
 
@@ -54,82 +55,53 @@ namespace DotnetSecurityDemo
 
         private static void TestHashAlgorithm()
         {
-            string line = Console.ReadLine();
-            string str;
-            var bytes = HashAlgorithmHelper.GetHash<System.Security.Cryptography.MD5CryptoServiceProvider>(line);
+            string inputValue = Console.ReadLine();
+            Console.WriteLine("inputValue=" + inputValue);
 
             Console.WriteLine("Provider:");
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA1CryptoServiceProvider>(line);
-            Console.WriteLine("SHA1CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA256CryptoServiceProvider>(line);
-            Console.WriteLine("SHA256CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA384CryptoServiceProvider>(line);
-            Console.WriteLine("SHA384CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA512CryptoServiceProvider>(line);
-            Console.WriteLine("SHA512CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.MD5CryptoServiceProvider>(line);
-            Console.WriteLine("MD5CryptoServiceProvider=" + str);
-
-
+            Console.WriteLine("MD5CryptoServiceProvider=" + SHA512CryptoServiceProviderHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA1CryptoServiceProvider=" + MD5CryptoServiceProviderHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA256CryptoServiceProvider=" + SHA1CryptoServiceProviderHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA384CryptoServiceProvider=" + SHA256CryptoServiceProviderHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA512CryptoServiceProvider=" + SHA384CryptoServiceProviderHelper.GetHashBase64String(inputValue));
+            
             Console.WriteLine("Managed:");
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA1Managed>(line);
-            Console.WriteLine("SHA1CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA256Managed>(line);
-            Console.WriteLine("SHA256CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA384Managed>(line);
-            Console.WriteLine("SHA384CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.SHA512Managed>(line);
-            Console.WriteLine("SHA512CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashBase64String<System.Security.Cryptography.RIPEMD160Managed>(line);
-            Console.WriteLine("RIPEMD160Managed=" + str);
+            Console.WriteLine("RIPEMD160Managed=" + RIPEMD160ManagedHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA1Managed=" + SHA1ManagedHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA256Managed=" + SHA256ManagedHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA384Managed=" + SHA384ManagedHelper.GetHashBase64String(inputValue));
+            Console.WriteLine("SHA512Managed=" + SHA512ManagedHelper.GetHashBase64String(inputValue));
 
 
             Console.WriteLine("Cng:");
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA1Cng>(line);
-            Console.WriteLine("SHA1CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA256Cng>(line);
-            Console.WriteLine("SHA256CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA384Cng>(line);
-            Console.WriteLine("SHA384CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA512Cng>(line);
-            Console.WriteLine("SHA512CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.MD5Cng>(line);
-            Console.WriteLine("MD5CryptoServiceProvider=" + str);
-
+            Console.WriteLine("MD5Cng=" + MD5CngHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA1Cng=" + SHA1CngHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA256Cng=" + SHA256CngHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA384Cng=" + SHA384CngHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA512Cng=" + SHA512CngHelper.GetHashHexString(inputValue));
 
             Console.WriteLine("Provider.HexString:");
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA1CryptoServiceProvider>(line);
-            Console.WriteLine("SHA1CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA256CryptoServiceProvider>(line);
-            Console.WriteLine("SHA256CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA384CryptoServiceProvider>(line);
-            Console.WriteLine("SHA384CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.SHA512CryptoServiceProvider>(line);
-            Console.WriteLine("SHA512CryptoServiceProvider=" + str);
-            str = HashAlgorithmHelper.GetHashHexString<System.Security.Cryptography.MD5CryptoServiceProvider>(line);
-            Console.WriteLine("MD5CryptoServiceProvider=" + str);
+            Console.WriteLine("MD5CryptoServiceProvider=" + SHA512CryptoServiceProviderHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA1CryptoServiceProvider=" + MD5CryptoServiceProviderHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA256CryptoServiceProvider=" + SHA1CryptoServiceProviderHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA384CryptoServiceProvider=" + SHA256CryptoServiceProviderHelper.GetHashHexString(inputValue));
+            Console.WriteLine("SHA512CryptoServiceProvider=" + SHA384CryptoServiceProviderHelper.GetHashHexString(inputValue));
 
+            string inputSecret = Console.ReadLine();
+            Console.WriteLine("inputSecret=" + inputSecret);
 
             Console.WriteLine("HMAC.HexString:");
-            str = HashAlgorithmHelper.GetHmacHexString<System.Security.Cryptography.HMACMD5>(line, line);
-            Console.WriteLine("HMACMD5=" + str);
-            str = HashAlgorithmHelper.GetHmacHexString<System.Security.Cryptography.HMACRIPEMD160>(line, line);
-            Console.WriteLine("HMACRIPEMD160=" + str);
-            str = HashAlgorithmHelper.GetHmacHexString<System.Security.Cryptography.HMACSHA1>(line, line);
-            Console.WriteLine("HMACSHA1=" + str);
-            str = HashAlgorithmHelper.GetHmacHexString<System.Security.Cryptography.HMACSHA256>(line, line);
-            Console.WriteLine("HMACSHA256=" + str);
-            str = HashAlgorithmHelper.GetHmacHexString<System.Security.Cryptography.HMACSHA384>(line, line);
-            Console.WriteLine("HMACSHA384=" + str);
-            str = HashAlgorithmHelper.GetHmacHexString<System.Security.Cryptography.HMACSHA512>(line, line);
-            Console.WriteLine("HMACSHA512=" + str);
-            str = HashAlgorithmHelper.GetHmacHexString<System.Security.Cryptography.MACTripleDES>(line, line);
-            Console.WriteLine("MACTripleDES=" + str);
-
-            str = HashAlgorithmHelper.PBKDF2HexString(line, 128, 1000);
-            Console.WriteLine("PBKDF2=" + str);
-            str = HashAlgorithmHelper.PBKDF2(line, "");
-            Console.WriteLine("PBKDF2=" + str);
+            Console.WriteLine("HMACMD5=" + HMACMD5Helper.GetHmacHexString(inputSecret, inputValue));
+            Console.WriteLine("HMACRIPEMD160=" + HMACRIPEMD160Helper.GetHmacHexString(inputSecret, inputValue));
+            Console.WriteLine("HMACSHA1=" + HMACSHA1Helper.GetHmacHexString(inputSecret, inputValue));
+            Console.WriteLine("HMACSHA256=" + HMACSHA256Helper.GetHmacHexString(inputSecret, inputValue));
+            Console.WriteLine("HMACSHA384=" + HMACSHA384Helper.GetHmacHexString(inputSecret, inputValue));
+            Console.WriteLine("HMACSHA512=" + HMACSHA512Helper.GetHmacHexString(inputSecret, inputValue));
+            Console.WriteLine("MACTripleDES=" + MACTripleDESHelper.GetHmacHexString(inputSecret, inputValue));
+            
+            Console.WriteLine("PBKDF2:");
+            Console.WriteLine("PBKDF2=" + PBKDF2Helper.PBKDF2HexString(inputValue, 128, 1000));
+            Console.WriteLine("PBKDF2=" + PBKDF2Helper.PBKDF2(inputValue, ""));
         }
 
         private static void TestAsymmetricAlgorithm()

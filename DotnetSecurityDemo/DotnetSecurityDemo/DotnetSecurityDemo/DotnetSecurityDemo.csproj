@@ -42,13 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DSAHelper.cs" />
-    <Compile Include="HashAlgorithmHelper.cs" />
+    <Compile Include="Hash\HashAlgorithmHelper.cs" />
+    <Compile Include="Hash\HashHelper.cs" />
+    <Compile Include="Hash\KeyedHashAlgorithmHelper.cs" />
+    <Compile Include="Hash\KeyedHashHelper.cs" />
+    <Compile Include="Hash\PBKDF2Helper.cs" />
     <Compile Include="KeyGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSAHelper.cs" />
     <Compile Include="SymmetricAlgorithmHelper.cs" />
-    <Compile Include="AbsAsymmetricAlgorithm.cs" />
+    <Compile Include="AsymmetricAlgorithm.cs" />
+    <Compile Include="X509CertificateHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

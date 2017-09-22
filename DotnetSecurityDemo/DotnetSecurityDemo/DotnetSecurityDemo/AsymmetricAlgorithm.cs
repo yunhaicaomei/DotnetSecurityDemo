@@ -11,13 +11,13 @@ namespace DotnetSecurityDemo
     /// <summary>
     /// 非对称加密
     /// </summary>
-    public class AbsAsymmetricAlgorithm<T> where T : AsymmetricAlgorithm, new()
+    public class AsymmetricAlgorithm<T> where T : AsymmetricAlgorithm, new()
     {
         /// <summary>
         /// 执行AsymmetricAlgorithm的方法
         /// </summary>
         /// <typeparam name="TResult"></typeparam>
-        /// <param name="key"></param>
+        /// <param name="key">密钥</param>
         /// <param name="function">外部传入的逻辑</param>
         /// <returns></returns>
         protected static TResult Execute<TResult>(string key, Func<T, TResult> function)

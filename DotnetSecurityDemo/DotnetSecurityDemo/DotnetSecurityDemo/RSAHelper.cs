@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace DotnetSecurityDemo
 {
-    /// <summary>
-    /// RSA非对称加密及签名算法
-    /// </summary>
-    public class RSAHelper : AbsAsymmetricAlgorithm<RSACryptoServiceProvider>
+    public class RSAHelper : AsymmetricAlgorithm<RSACryptoServiceProvider>
     {
         static RSAHelper()
         {

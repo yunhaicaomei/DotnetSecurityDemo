@@ -10,7 +10,7 @@ namespace DotnetSecurityDemo
     /// <summary>
     /// RSA非对称签名算法
     /// </summary>
-    public class DSAHelper : AbsAsymmetricAlgorithm<DSACryptoServiceProvider>
+    public class DSAHelper : AsymmetricAlgorithm<DSACryptoServiceProvider>
     {
         static DSAHelper()
         {
