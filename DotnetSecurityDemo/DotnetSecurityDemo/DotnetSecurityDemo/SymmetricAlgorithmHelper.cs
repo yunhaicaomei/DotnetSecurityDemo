@@ -12,7 +12,7 @@ namespace DotnetSecurityDemo
     /// <summary>
     /// 对称加密
     /// </summary>
-    public class SymmetricAlgorithmHaldle
+    public class SymmetricAlgorithmHelper
     {
         /// <summary>
         /// 解密方法（对称加密解密）

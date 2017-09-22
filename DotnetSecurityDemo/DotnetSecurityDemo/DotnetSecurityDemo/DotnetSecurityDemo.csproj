@@ -41,11 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HashAlgorithmHandle.cs" />
+    <Compile Include="DSAHelper.cs" />
+    <Compile Include="HashAlgorithmHelper.cs" />
     <Compile Include="KeyGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SymmetricAlgorithmHaldle.cs" />
+    <Compile Include="RSAHelper.cs" />
+    <Compile Include="SymmetricAlgorithmHelper.cs" />
+    <Compile Include="AbsAsymmetricAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

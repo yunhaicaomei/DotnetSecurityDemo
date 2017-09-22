@@ -10,7 +10,7 @@ namespace DotnetSecurityDemo
     /// <summary>
     /// 哈希算法
     /// </summary>
-    public class HashAlgorithmHandle
+    public class HashAlgorithmHelper
     {
         /// <summary>
         /// 
@@ -23,6 +23,13 @@ namespace DotnetSecurityDemo
             byte[] buffer = Encoding.UTF8.GetBytes(val);
             T hash = new T();
             byte[] t = hash.ComputeHash(buffer);
+            return t;
+        }
+
+        public static byte[] GetHash<T>(System.IO.Stream val) where T : HashAlgorithm, new()
+        {
+            T hash = new T();
+            byte[] t = hash.ComputeHash(val);
             return t;
         }
 
@@ -46,7 +53,7 @@ namespace DotnetSecurityDemo
             return returnStr.ToString();
         }
 
-        public static byte[] GetHmac<T>(string secret, string val) where T : HMAC, new()
+        public static byte[] GetHmac<T>(string secret, string val) where T : KeyedHashAlgorithm, new()
         {
             T hmac = new T();
             if (secret != null)
@@ -58,13 +65,13 @@ namespace DotnetSecurityDemo
             return t;
         }
 
-        public static string GetHmacBase64String<T>(string secret, string input) where T : HMAC, new()
+        public static string GetHmacBase64String<T>(string secret, string input) where T : KeyedHashAlgorithm, new()
         {
             var bytes = GetHmac<T>(secret, input);
             return Convert.ToBase64String(bytes);
         }
 
-        public static string GetHmacHexString<T>(string secret, string input) where T : HMAC, new()
+        public static string GetHmacHexString<T>(string secret, string input) where T : KeyedHashAlgorithm, new()
         {
             var bytes = GetHmac<T>(secret, input);
             StringBuilder returnStr = new StringBuilder();

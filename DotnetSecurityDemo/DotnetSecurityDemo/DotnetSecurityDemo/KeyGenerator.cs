@@ -37,7 +37,6 @@ namespace DotnetSecurityDemo
         /// <typeparam name="T"></typeparam>
         /// <param name="publicKey">公钥（Xml格式）</param>
         /// <param name="privateKey">私钥（Xml格式）</param>
-        /// <param name="provider">用于生成秘钥的非对称算法实现类，因为非对称算法长度需要在构造函数传入，所以这里只能传递算法类</param>  
         public static void CreateAsymmetricAlgorithmKey<T>(out string publicKey, out string privateKey, T provider = null)
             where T : AsymmetricAlgorithm, new()
         {
@@ -66,12 +65,9 @@ namespace DotnetSecurityDemo
             string privateKey, publicKey;
             for (var i = 800; i < 2000; i += 8)
             {
-                using (RSACryptoServiceProvider provider = new RSACryptoServiceProvider(i))
-                {
-                    KeyGenerator.CreateAsymmetricAlgorithmKey<RSACryptoServiceProvider>(out publicKey, out privateKey, provider);
-                    Console.WriteLine("publicKey=" + publicKey + "," + publicKey.Length);
-                    Console.WriteLine("privateKey=" + privateKey + "," + privateKey.Length);
-                }
+                KeyGenerator.CreateAsymmetricAlgorithmKey<RSACryptoServiceProvider>(out publicKey, out privateKey);
+                Console.WriteLine("publicKey=" + publicKey + "," + publicKey.Length);
+                Console.WriteLine("privateKey=" + privateKey + "," + privateKey.Length);
             }
         }
     }
